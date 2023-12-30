@@ -1,0 +1,23 @@
+{
+    "header": "welcome",
+    "exams" :"EXAMS TIME",
+    "examPara":"Here we are, Are you ready to fight? Don't worry, we prepared some tips to be ready for your exams.",
+    "quote":"Nothing happens until something moves - Albert Einstem",
+    "buttonTxt":"View exams tips",
+    "annouc":"Announcements",
+    "all":"All",
+    "WhatsDue":"What's due",
+    "quiz":"Unit 2 quiz",
+    "quizButton":"Start Quiz",
+    "assign":"12-12 Assignment",
+    "assignButton":"Solve Assignment",
+    "course":"Course",
+    "topic":"Topic",
+    "dueTo":"Due to",
+    "dashboard":"Dashboard",
+    "schedule":"Schedule",
+    "courses":"Courses",
+    "gradeBook":"Gradebook",
+    "performance":"Performance"
+
+}
