@@ -1,16 +1,19 @@
 import { t } from "i18next";
 import Button from "../Button";
+import "./exams.css";
 
 const Examstips = () => {
-    return (
-        <div className="flex flex-col space-y-2 ">
-            <h1 className="text-indigo-400">{t("exams")}</h1>
-    <p style={{lineHeight:'20px'}}>{t("examPara")}</p>
-    <span>{t("quote")}</span>
-    <Button className="bg-indigo-600 px-5 text-opacity-40 hover:text-white" width="w-fit">{t("buttonTxt")}</Button>
-</div>
-    )
+  return (
+    <div className="flex flex-col space-y-2 ">
+      <div className="forGradient">
+        <h1 className="text-2xl">{t("exams")}</h1>
+      </div>
+      <p style={{ lineHeight: "20px" }}>{t("examPara")}</p>
+      <span>{t("quote")}</span>
 
+        <Button className="btnGradient">{t("buttonTxt")}</Button>
+    </div>
+  );
 };
 
 export default Examstips;

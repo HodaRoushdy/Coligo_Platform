@@ -4,7 +4,6 @@ import CampaignIcon from "@mui/icons-material/Campaign";
 import HomeIcon from "@mui/icons-material/Home";
 import MovingIcon from "@mui/icons-material/Moving";
 import SchoolIcon from "@mui/icons-material/School";
-// Switch, Route;
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -13,42 +12,52 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-// import Typography from "@mui/material/Typography";
-import * as React from "react";
-import { Link, Outlet } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
+// import * as React from "react";
 import AppBar from "@mui/material/AppBar";
+import { Link, Outlet } from "react-router-dom";
 
 import Box from "@mui/material/Box";
-
-
 import HeaderComp from "../Header";
-import { IconButton } from "@mui/material";
+import React from "react";
+// import { IconButton } from "@mui/material";
 
 const drawerWidth = 220;
 
-
 export default function ResponsiveDrawer() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const styles = {
+    gradient: {
+      backgroundImage: "linear-gradient(to bottom, #4f46e5 , #818cf8)",
+    },
+    forColor: {
+      color: "white",
+      fontSize: "30px",
+    },
   };
 
+
+ const [mobileOpen, setMobileOpen] = React.useState(false);
+
+ const handleDrawerToggle = () => {
+   setMobileOpen(!mobileOpen);
+ };
   const drawer = (
-    <div>
+    <div className="h-full" style={styles.gradient}>
       <Toolbar>
-        <h1 className="text-2xl flex justify-center w-full">Caligo</h1>
+        <h1
+          className="text-2xl flex justify-center w-full"
+          style={styles.forColor}>
+          Coligo
+        </h1>
       </Toolbar>
 
       <List className="space-y-4">
         <Link to="/dashboard">
-          <ListItem button>
+          <ListItem className="drawerItem">
             <ListItemButton>
               <ListItemIcon>
-                <HomeIcon />
+                <HomeIcon style={styles.forColor} />
               </ListItemIcon>
-              <ListItemText primary={"dashboard"} />
+              <ListItemText className="txt" primary={"dashboard"} style={styles.forColor} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -57,9 +66,9 @@ export default function ResponsiveDrawer() {
           <ListItem button>
             <ListItemButton>
               <ListItemIcon>
-                <CalendarMonthIcon />
+                <CalendarMonthIcon style={styles.forColor} />
               </ListItemIcon>
-              <ListItemText primary={"schedule"} />
+              <ListItemText style={styles.forColor} primary={"schedule"} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -68,9 +77,9 @@ export default function ResponsiveDrawer() {
           <ListItem button>
             <ListItemButton>
               <ListItemIcon>
-                <AssignmentIcon />
+                <AssignmentIcon style={styles.forColor} />
               </ListItemIcon>
-              <ListItemText primary={"courses"} />
+              <ListItemText style={styles.forColor} primary={"courses"} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -81,9 +90,9 @@ export default function ResponsiveDrawer() {
           <ListItem button>
             <ListItemButton>
               <ListItemIcon>
-                <SchoolIcon />
+                <SchoolIcon style={styles.forColor} />
               </ListItemIcon>
-              <ListItemText primary={"Grade book"} />
+              <ListItemText style={styles.forColor} primary={"Grade book"} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -92,9 +101,9 @@ export default function ResponsiveDrawer() {
           <ListItem button>
             <ListItemButton>
               <ListItemIcon>
-                <MovingIcon />
+                <MovingIcon style={styles.forColor} />
               </ListItemIcon>
-              <ListItemText primary={"Performance"} />
+              <ListItemText style={styles.forColor} primary={"Performance"} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -103,9 +112,9 @@ export default function ResponsiveDrawer() {
           <ListItem button>
             <ListItemButton>
               <ListItemIcon>
-                <CampaignIcon />
+                <CampaignIcon style={styles.forColor} />
               </ListItemIcon>
-              <ListItemText primary={"annoucement"} />
+              <ListItemText style={styles.forColor} primary={"annoucement"} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -116,21 +125,14 @@ export default function ResponsiveDrawer() {
   return (
     <Box sx={{ display: "flex" }} className="bg-gray-100 rounded-md">
       <CssBaseline />
+
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}>
-            <MenuIcon />
-          </IconButton>
-          <HeaderComp />
+        <HeaderComp />
       </AppBar>
       <Box
         component="nav"
@@ -152,6 +154,7 @@ export default function ResponsiveDrawer() {
           }}>
           {drawer}
         </Drawer>
+
         <Drawer
           variant="permanent"
           sx={{
@@ -165,6 +168,7 @@ export default function ResponsiveDrawer() {
           {drawer}
         </Drawer>
       </Box>
+
       <Box
         component="main"
         sx={{

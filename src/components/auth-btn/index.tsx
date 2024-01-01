@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { changeStatus, useAppDispatch } from "../../App/hooks";
 import { RootState } from "../../App/store";
 import Button from "../Button";
@@ -7,14 +8,22 @@ import Button from "../Button";
 const AuthBtn = () => {
   const IsLogged = useSelector((state: RootState) => state.isLogged.isLoggedIn);
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (IsLogged) {
+      navigate("/dashboard");
+    } else {
+      navigate("/");
+    }
+  }, [IsLogged, navigate]);
   const handleClick = () => {
     dispatch(changeStatus());
-    if (IsLogged) {
-      return <Navigate to={"/dashboard"} />;
-    } else {
-      return <Navigate to={"/"} />;
-    }
   };
-  return <Button onClick={handleClick}>{IsLogged ? "Logout" : "Login"}</Button>;
+  return (
+    <Button className="text-indigo-600" onClick={handleClick}>
+      {IsLogged ? "Logout" : "Login"}
+    </Button>
+  );
 };
 export default AuthBtn;

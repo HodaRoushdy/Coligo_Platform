@@ -1,28 +1,22 @@
-import IconButton from "@mui/material/IconButton";
-
-import Toolbar from "@mui/material/Toolbar";
-
-import * as React from "react";
-
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchIcon from "@mui/icons-material/Search";
-import { Typography, alpha, styled } from "@mui/material";
+import { Badge, Typography, styled } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
+import * as React from "react";
 // import AppBar from "@mui/material/AppBar";
-import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import AuthBtn from "../auth-btn";
+import MenuIcon from "@mui/icons-material/Menu";
+
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
@@ -54,6 +48,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+// #818cf8
 
 const HeaderComp = () => {
   const imgUrl =
@@ -99,6 +94,14 @@ const HeaderComp = () => {
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
+
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -115,8 +118,11 @@ const HeaderComp = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+        <IconButton
+          sx={{ color: "#4f46e5" }}
+          size="large"
+          aria-label="show 17 new notifications">
+          <Badge badgeContent={4} color="primary">
             <MailIcon />
           </Badge>
         </IconButton>
@@ -124,9 +130,9 @@ const HeaderComp = () => {
       </MenuItem>
       <MenuItem>
         <IconButton
+          sx={{ color: "#4f46e5" }}
           size="large"
-          aria-label="show 17 new notifications"
-          color="inherit">
+          aria-label="show 17 new notifications">
           <Badge badgeContent={17} color="error">
             <NotificationsIcon />
           </Badge>
@@ -135,6 +141,7 @@ const HeaderComp = () => {
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
+          style={{ color: "#4f46e5" }}
           size="large"
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -149,12 +156,27 @@ const HeaderComp = () => {
 
   return (
     <>
-      <Toolbar className="bg-indigo-600">
-        <Typography variant="h4" noWrap component="div">
+      <Toolbar className="bg-gray-100">
+        <Typography
+          variant="h4"
+          noWrap
+          component="div"
+          className="sm:hidden xl:flex text-gray-600">
           welcome Talia,
         </Typography>
+
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{ mr: 2, display: { sm: "none" } }}>
+          <MenuIcon style={{ color: "#4f46e5" }} />
+        </IconButton>
+
         <Box sx={{ flexGrow: 1 }} />
-        <Search className="rounded-full">
+
+        <Search className="rounded-full sm:hidden xl:flex bg-indigo-500">
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -163,19 +185,31 @@ const HeaderComp = () => {
             inputProps={{ "aria-label": "search" }}
           />
         </Search>
+        <AuthBtn />
 
         <IconButton
+          className="sm:hidden lg:flex"
           size="large"
           aria-label="show 17 new notifications"
           color="inherit">
           <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+            <NotificationsIcon
+              style={{
+                color: "#6366f1",
+                fontSize: "var(--Icon-fontSize,25px)",
+              }}
+            />
           </Badge>
         </IconButton>
 
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
-            <MailIcon />
+            <MailIcon
+              style={{
+                color: "#6366f1",
+                fontSize: "var(--Icon-fontSize,25px)",
+              }}
+            />
           </Badge>
         </IconButton>
 
