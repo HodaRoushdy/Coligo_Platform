@@ -17,19 +17,19 @@ const Announcement = () => {
   const [announcements, setAnnouncements] = useState<IData[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/announcements/")
-      .then(async (res) => {
-        console.log("respons:", res);
-        console.log(await res.json());
-        return await res.json();
-      })
-      .then((data: IWrapper) => {
-        // console.log(data);
-        console.log(data);
-        setAnnouncements(data.data.allAnnoucements);
-        alert(announcements);
-      });
+    if (!announcements.length) {
+      fetch("http://localhost:3000/api/announcements/")
+        .then(async (res) => {
+          return await res.json();
+        })
+        .then((data: IWrapper) => {
+          setAnnouncements(data.data.allAnnoucements);
+        });
+    }
   }, [announcements]);
+
+
+
 
   const renderAnnounceData = announcements.map((announce) => (
     <OneAnnounce announcement={announce} />

@@ -1,12 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import OneAnnounce from "../for_one_announce";
-const announcement = {
-  imgUrl:
+import { IData } from "../Data";
+const announcement :IData= {
+  image:
     "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   imgAlt: "man Announcement",
-  personName: "Mr.Ahmed Mostafa",
-  personDesc: "Math 101",
-  announce:
+  name: "Mr.Ahmed Mostafa",
+  desc: "Math 101",
+  annoucement:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolor doloribus, magni ea, veniam placeat nemo ut asperiores optio, esse est quod cumque praesentium rerum.",
 };
 test("the component return data correctly", () => {

@@ -2,11 +2,33 @@ import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import { Typography } from "@mui/material";
 import { t } from "i18next";
+import { useEffect, useState } from "react";
 import Button from "../Button";
-import { AssignData, QuizData } from "../Data";
-
+import { AssignData, IQuizProp } from "../Data";
+interface IResData {
+  allQuizzes: IQuizProp[];
+}
+interface IWrapper {
+  status: string;
+  data: IResData;
+}
 const WhatsDue = () => {
-  const renderQuizzes = QuizData.map((quiz) => {
+  const [quizzes, setQuizzes] = useState<IQuizProp[]>([]);
+
+  useEffect(() => {
+    console.log(quizzes)
+    if (!quizzes.length) {
+      fetch("http://localhost:3000/api/quizzes/")
+        .then(async (res) => {
+          return await res.json();
+        })
+        .then((data: IWrapper) => {
+          setQuizzes(data.data.allQuizzes);
+        });
+    }
+  }, [quizzes]);
+
+  const renderQuizzes = quizzes.map((quiz) => {
     return (
       <div className="flex gap-x-1">
         <p className="text-gray-400 text-sm ">{quiz.attribute}:</p>
@@ -23,6 +45,7 @@ const WhatsDue = () => {
       </div>
     );
   });
+
   return (
     <>
       <div className="bg-white p-2 pb-2 border-b-2 border-gray-300 ">
@@ -32,8 +55,7 @@ const WhatsDue = () => {
             <a
               href="#"
               style={{ textDecoration: "none" }}
-              className="text-indigo-400"
-            >
+              className="text-indigo-400">
               {t("all")}
             </a>
           </div>
@@ -47,8 +69,7 @@ const WhatsDue = () => {
             className="flex gap-x-1 "
             style={{
               textAlign: "center",
-            }}
-          >
+            }}>
             <HourglassEmptyIcon
               color={"info"}
               style={{
@@ -69,8 +90,7 @@ const WhatsDue = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-        }}
-      >
+        }}>
         <div className="">
           <div className="flex space-x-1">
             <TextSnippetIcon
