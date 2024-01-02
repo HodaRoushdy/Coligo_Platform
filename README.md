@@ -1,4 +1,11 @@
-# React + TypeScript + Vite
+# This project was completed in 4 days.
+
+# you can see the deployed version in : https://coligo-platform.vercel.app/
+
+# Coligo Platform
+
+## Description
+- it is a frontend application which provide responsive user interface Coligo Platform using react, reduxjs, i18n , tailwindcss and MUI 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
