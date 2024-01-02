@@ -5,15 +5,16 @@ import { PageRoutes } from "../Utils";
 import OneAnnounce from "../for_one_announce";
 import { IAnnResData, IData, IResWrapper } from "../interfaces";
 
-
-
-
 const Announcement = () => {
   const [announcements, setAnnouncements] = useState<IData[]>([]);
 
   useEffect(() => {
     if (!announcements.length) {
-      fetch("http://localhost:3000/api/announcements/")
+      fetch(
+        `${import.meta.env.VITE_BASE_API_DOMAIN}${
+          import.meta.env.VITE_ANNOUNCEMENT_API
+        }`
+      )
         .then(async (res) => {
           return await res.json();
         })

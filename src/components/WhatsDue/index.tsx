@@ -12,7 +12,11 @@ const WhatsDue = () => {
 
   useEffect(() => {
     if (!quizzes.length) {
-      fetch("http://localhost:3000/api/quizzes/")
+      fetch(
+        `${import.meta.env.VITE_BASE_API_DOMAIN}${
+          import.meta.env.VITE_QUIZZES_API
+        }`
+      )
         .then(async (res) => {
           return await res.json();
         })
@@ -24,7 +28,7 @@ const WhatsDue = () => {
 
   const renderQuizzes = quizzes.map((quiz) => {
     return (
-      <>
+      <div className="border-b-2 py-3">
         <div
           className="flex gap-x-1 "
           style={{
@@ -55,7 +59,7 @@ const WhatsDue = () => {
         <Button className="border border-indigo-400 text-indigo-700 my-3 w-full">
           {t("start.quiz")}
         </Button>
-      </>
+      </div>
     );
   });
 
@@ -70,7 +74,7 @@ const WhatsDue = () => {
 
   return (
     <>
-      <div className="bg-white p-2 pb-2 border-b-2 border-gray-300 ">
+      <div className="bg-white p-2 pb-2 border-gray-300 ">
         <div className="pb-6">
           <div className="flex justify-between">
             <h1>{t("WhatsDue")}</h1>
