@@ -15,6 +15,7 @@ import AppBar from "@mui/material/AppBar";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 import Box from "@mui/material/Box";
+import List from "@mui/material/List";
 import { t } from "i18next";
 import React from "react";
 import HeaderComp from "../Header";
@@ -51,6 +52,7 @@ export default function ResponsiveDrawer() {
       "&.Mui-selected .MuiListItemIcon-root": {
         color: "#818cf8!important",
       },
+      paddingBlock: "16px",
     },
   };
 
@@ -65,77 +67,79 @@ export default function ResponsiveDrawer() {
       <Toolbar>
         <h1 className="text-2xl flex justify-center w-full">{t("coligo")}</h1>
       </Toolbar>
-      <Link to={PageRoutes.Dashboard}>
-        <ListItemButton
-          sx={styles.listItemButtonStyle}
-          selected={pathname == PageRoutes.Dashboard}
-        >
-          <ListItemIcon>
-            <HomeIcon style={styles.iconSize} />
-          </ListItemIcon>
-          <ListItemText className="txt" primary={t("dashboard")} />
-        </ListItemButton>
-      </Link>
+      <List>
+        <Link to={PageRoutes.Dashboard}>
+          <ListItemButton
+            sx={styles.listItemButtonStyle}
+            selected={pathname == PageRoutes.Dashboard}
+          >
+            <ListItemIcon>
+              <HomeIcon style={styles.iconSize} />
+            </ListItemIcon>
+            <ListItemText className="txt" primary={t("dashboard")} />
+          </ListItemButton>
+        </Link>
 
-      <Link to={PageRoutes.Schedule}>
-        <ListItemButton
-          sx={styles.listItemButtonStyle}
-          selected={pathname == PageRoutes.Schedule}
-        >
-          <ListItemIcon>
-            <CalendarMonthIcon style={styles.iconSize} />
-          </ListItemIcon>
-          <ListItemText style={styles.iconSize} primary={t("schedule")} />
-        </ListItemButton>
-      </Link>
+        <Link to={PageRoutes.Schedule}>
+          <ListItemButton
+            sx={styles.listItemButtonStyle}
+            selected={pathname == PageRoutes.Schedule}
+          >
+            <ListItemIcon>
+              <CalendarMonthIcon style={styles.iconSize} />
+            </ListItemIcon>
+            <ListItemText style={styles.iconSize} primary={t("schedule")} />
+          </ListItemButton>
+        </Link>
 
-      <Link to={PageRoutes.Courses}>
-        <ListItemButton
-          sx={styles.listItemButtonStyle}
-          selected={pathname == PageRoutes.Courses}
-        >
-          <ListItemIcon>
-            <AssignmentIcon style={styles.iconSize} />
-          </ListItemIcon>
-          <ListItemText style={styles.iconSize} primary={t("courses")} />
-        </ListItemButton>
-      </Link>
+        <Link to={PageRoutes.Courses}>
+          <ListItemButton
+            sx={styles.listItemButtonStyle}
+            selected={pathname == PageRoutes.Courses}
+          >
+            <ListItemIcon>
+              <AssignmentIcon style={styles.iconSize} />
+            </ListItemIcon>
+            <ListItemText style={styles.iconSize} primary={t("courses")} />
+          </ListItemButton>
+        </Link>
 
-      <Link to={PageRoutes.Gradebook}>
-        <ListItemButton
-          sx={styles.listItemButtonStyle}
-          selected={pathname == PageRoutes.Gradebook}
-        >
-          <ListItemIcon>
-            <SchoolIcon style={styles.iconSize} />
-          </ListItemIcon>
-          <ListItemText style={styles.iconSize} primary={t("gradeBook")} />
-        </ListItemButton>
-      </Link>
+        <Link to={PageRoutes.Gradebook}>
+          <ListItemButton
+            sx={styles.listItemButtonStyle}
+            selected={pathname == PageRoutes.Gradebook}
+          >
+            <ListItemIcon>
+              <SchoolIcon style={styles.iconSize} />
+            </ListItemIcon>
+            <ListItemText style={styles.iconSize} primary={t("gradeBook")} />
+          </ListItemButton>
+        </Link>
 
-      <Link to={PageRoutes.Performance}>
-        <ListItemButton
-          sx={styles.listItemButtonStyle}
-          selected={pathname == PageRoutes.Performance}
-        >
-          <ListItemIcon>
-            <MovingIcon style={styles.iconSize} />
-          </ListItemIcon>
-          <ListItemText style={styles.iconSize} primary={t("performance")} />
-        </ListItemButton>
-      </Link>
+        <Link to={PageRoutes.Performance}>
+          <ListItemButton
+            sx={styles.listItemButtonStyle}
+            selected={pathname == PageRoutes.Performance}
+          >
+            <ListItemIcon>
+              <MovingIcon style={styles.iconSize} />
+            </ListItemIcon>
+            <ListItemText style={styles.iconSize} primary={t("performance")} />
+          </ListItemButton>
+        </Link>
 
-      <Link to={PageRoutes.Announcement}>
-        <ListItemButton
-          sx={styles.listItemButtonStyle}
-          selected={pathname == PageRoutes.Announcement}
-        >
-          <ListItemIcon>
-            <CampaignIcon style={styles.iconSize} />
-          </ListItemIcon>
-          <ListItemText style={styles.iconSize} primary={t("announce")} />
-        </ListItemButton>
-      </Link>
+        <Link to={PageRoutes.Announcement}>
+          <ListItemButton
+            sx={styles.listItemButtonStyle}
+            selected={pathname == PageRoutes.Announcement}
+          >
+            <ListItemIcon>
+              <CampaignIcon style={styles.iconSize} />
+            </ListItemIcon>
+            <ListItemText style={styles.iconSize} primary={t("announce")} />
+          </ListItemButton>
+        </Link>
+      </List>
     </div>
   );
 
