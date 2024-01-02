@@ -5,7 +5,8 @@
 # Coligo Platform
 
 ## Description
-- it is a frontend application which provide responsive user interface Coligo Platform using react, reduxjs, i18n , tailwindcss and MUI 
+
+- it is a frontend application which provide responsive user interface Coligo Platform using react, reduxjs, i18n , tailwindcss and MUI
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -24,12 +25,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
