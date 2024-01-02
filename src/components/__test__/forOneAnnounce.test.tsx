@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import OneAnnounce from "../for_one_announce";
-import { IData } from "../Data";
+import { IData } from "../interfaces";
+
 const announcement :IData= {
   image:
     "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
