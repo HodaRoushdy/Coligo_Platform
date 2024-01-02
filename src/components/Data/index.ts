@@ -6,6 +6,12 @@ export interface IData {
   annoucement: string;
 }
 export interface IQuizProp {
+  course: string;
+  dueTo: string;
+  topic: string;
+}
+
+export interface IAssignmentProp {
   attribute: string;
   value: string;
 }
@@ -48,22 +54,7 @@ export const AnnounceData: IData[] = [
   },
 ];
 
-export const QuizData: IQuizProp[] = [
-  {
-    attribute: "Course",
-    value: "Physics 02",
-  },
-  {
-    attribute: "Topic",
-    value: "Unit 2 : motion and force",
-  },
-  {
-    attribute: "Due to",
-    value: "20 Dec 2017 - 9:00 pm",
-  },
-];
-
-export const AssignData: IQuizProp[] = [
+export const AssignData: IAssignmentProp[] = [
   {
     attribute: "Course",
     value: "Arabic K12",

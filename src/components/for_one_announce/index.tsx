@@ -22,9 +22,7 @@ const OneAnnounce = ({ announcement: announcement, index }: IProps) => {
 
           <div>
             <h3>{announcement.name}</h3>
-            <span className="text-gray-400 text-sm">
-              {announcement.desc}
-            </span>
+            <span className="text-gray-400 text-sm">{announcement.desc}</span>
           </div>
         </div>
       </div>

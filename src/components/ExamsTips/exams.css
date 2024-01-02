@@ -1,13 +1,13 @@
-.forGradient{
-    background: -webkit-linear-gradient(#4f46e5,#818cf8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+.forGradient {
+  background: -webkit-linear-gradient(#4f46e5, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .btnGradient {
-    background-image: linear-gradient(to right, #4f46e5 , #818cf8);
-    color: white;
+  background-image: linear-gradient(to right, #4f46e5, #818cf8);
+  color: white;
 }
-.btnGradient:hover{
-    background:white;
-    color:#4f46e5
+.btnGradient:hover {
+  background: white;
+  color: #4f46e5;
 }

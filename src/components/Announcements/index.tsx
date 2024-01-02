@@ -28,9 +28,6 @@ const Announcement = () => {
     }
   }, [announcements]);
 
-
-
-
   const renderAnnounceData = announcements.map((announce) => (
     <OneAnnounce announcement={announce} />
   ));
@@ -46,7 +43,8 @@ const Announcement = () => {
           <Link
             to={PageRoutes.Announcement}
             style={{ textDecoration: "none" }}
-            className="text-indigo-400 font-bold">
+            className="text-indigo-400 font-bold"
+          >
             {t("all")}
           </Link>
         </div>

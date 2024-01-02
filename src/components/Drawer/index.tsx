@@ -29,7 +29,7 @@ export default function ResponsiveDrawer() {
 
   const styles = {
     gradient: {
-      backgroundImage: "linear-gradient(to bottom, #4f46e5 , #818cf8)",
+      backgroundImage: "linear-gradient(to bottom, #4f46e5,##5c54e3, #98a1fa)",
     },
     iconSize: {
       fontSize: "30px",
@@ -177,7 +177,8 @@ export default function ResponsiveDrawer() {
           }}
           PaperProps={{
             sx: {
-              backgroundColor: "linear-gradient(to bottom, #4f46e5 , #819fff)",
+              backgroundColor:
+                "linear-gradient(to bottom,#4f46e5,##5c54e3, #98a1fa)",
               color: "white",
               "::selection": {
                 backgroundColor: "white",
@@ -200,7 +201,8 @@ export default function ResponsiveDrawer() {
           }}
           PaperProps={{
             sx: {
-              backgroundColor: "linear-gradient(to bottom, #4f46e5 , #819fff)",
+              backgroundColor:
+                "linear-gradient(to bottom, #4f46e5,##5c54e3, #98a1fa)",
               color: "white",
               "::selection": {
                 backgroundColor: "white",

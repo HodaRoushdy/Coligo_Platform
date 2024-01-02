@@ -16,7 +16,6 @@ const WhatsDue = () => {
   const [quizzes, setQuizzes] = useState<IQuizProp[]>([]);
 
   useEffect(() => {
-    console.log(quizzes)
     if (!quizzes.length) {
       fetch("http://localhost:3000/api/quizzes/")
         .then(async (res) => {
@@ -30,10 +29,38 @@ const WhatsDue = () => {
 
   const renderQuizzes = quizzes.map((quiz) => {
     return (
-      <div className="flex gap-x-1">
-        <p className="text-gray-400 text-sm ">{quiz.attribute}:</p>
-        <p className="text-gray-400 text-sm ">{quiz.value}</p>
-      </div>
+      <>
+        <div
+          className="flex gap-x-1 "
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <HourglassEmptyIcon
+            color={"info"}
+            style={{
+              fontSize: "26px",
+            }}
+          />
+          <Typography>{t("quiz")}</Typography>
+        </div>
+
+        <div className="flex gap-x-1">
+          <p className="text-gray-400 text-sm ">{t("course")}:</p>
+          <p className="text-gray-400 text-sm ">{quiz.course}</p>
+        </div>
+        <div className="flex gap-x-1">
+          <p className="text-gray-400 text-sm ">{t("topic")}:</p>
+          <p className="text-gray-400 text-sm ">{quiz.topic}</p>
+        </div>
+        <div className="flex gap-x-1">
+          <p className="text-gray-400 text-sm ">{t("dueTo")}:</p>
+          <p className="text-gray-400 text-sm ">{quiz.dueTo}</p>
+        </div>
+        <Button className="border border-indigo-400 text-indigo-700 my-3 w-full">
+          {t("start.quiz")}
+        </Button>
+      </>
     );
   });
 
@@ -55,7 +82,8 @@ const WhatsDue = () => {
             <a
               href="#"
               style={{ textDecoration: "none" }}
-              className="text-indigo-400">
+              className="text-indigo-400"
+            >
               {t("all")}
             </a>
           </div>
@@ -64,25 +92,7 @@ const WhatsDue = () => {
             <p className="text-gray-400 text-sm md:text-xs">{t("lorem")}</p>
           </div>
         </div>
-        <div className="grid gap-y-1">
-          <div
-            className="flex gap-x-1 "
-            style={{
-              textAlign: "center",
-            }}>
-            <HourglassEmptyIcon
-              color={"info"}
-              style={{
-                fontSize: "26px",
-              }}
-            />
-            <Typography>{t("quiz")}</Typography>
-          </div>
-          {renderQuizzes}
-          <Button className="border border-indigo-400 text-indigo-700 my-3 w-full">
-            {t("start.quiz")}
-          </Button>
-        </div>
+        <div className="grid gap-y-2">{renderQuizzes}</div>
       </div>
       <br></br>
       <div
@@ -90,7 +100,8 @@ const WhatsDue = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-        }}>
+        }}
+      >
         <div className="">
           <div className="flex space-x-1">
             <TextSnippetIcon
@@ -102,7 +113,7 @@ const WhatsDue = () => {
             <Typography>{t("assign")}</Typography>
           </div>
         </div>
-        <div className="grid gap-y-1">
+        <div className="grid gap-y-2">
           {renderAssignData}
 
           <Button className="border border-indigo-400 text-indigo-700 my-3 w-full">
