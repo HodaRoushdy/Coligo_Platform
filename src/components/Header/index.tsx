@@ -6,7 +6,6 @@ import { Badge, Typography, styled } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import * as React from "react";
-// import AppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
@@ -14,6 +13,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { t } from "i18next";
 import AuthBtn from "../auth-btn";
+import { IHeaderProps } from "../interfaces";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -49,9 +49,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-interface IHeaderProps {
-  handleDrawerToggle: () => void;
-}
+
 
 const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
   const imgUrl =

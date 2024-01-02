@@ -1,20 +1,5 @@
-export interface IData {
-  image: string;
-  imgAlt: string;
-  name: string;
-  desc: string;
-  annoucement: string;
-}
-export interface IQuizProp {
-  course: string;
-  dueTo: string;
-  topic: string;
-}
+import { IAssignmentProp, IData } from "../interfaces";
 
-export interface IAssignmentProp {
-  attribute: string;
-  value: string;
-}
 export const AnnounceData: IData[] = [
   {
     image:

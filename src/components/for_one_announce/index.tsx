@@ -1,15 +1,14 @@
-import { IData } from "../Data";
+import { IOneAnnounceProps } from "../interfaces";
 
-interface IProps {
-  announcement: IData;
-  index?: number;
-}
-const OneAnnounce = ({ announcement: announcement, index }: IProps) => {
+
+const OneAnnounce = ({
+  announcement: announcement,
+  index,
+}: IOneAnnounceProps) => {
   return (
     <div
       className="md:flex gap-x-2 p-3 divide-x divide-slate-200"
-      data-testid={`announcement ${index}`}
-    >
+      data-testid={`announcement ${index}`}>
       <div className="">
         <div className="flex w-52 items-center">
           <div className="pr-3">

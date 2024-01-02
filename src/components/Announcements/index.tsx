@@ -1,17 +1,12 @@
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { IData } from "../Data";
 import { PageRoutes } from "../Utils";
 import OneAnnounce from "../for_one_announce";
+import { IAnnResData, IData, IResWrapper } from "../interfaces";
 
-interface IResData {
-  allAnnoucements: IData[];
-}
-interface IWrapper {
-  status: string;
-  data: IResData;
-}
+
+
 
 const Announcement = () => {
   const [announcements, setAnnouncements] = useState<IData[]>([]);
@@ -22,7 +17,7 @@ const Announcement = () => {
         .then(async (res) => {
           return await res.json();
         })
-        .then((data: IWrapper) => {
+        .then((data: IResWrapper<IAnnResData>) => {
           setAnnouncements(data.data.allAnnoucements);
         });
     }

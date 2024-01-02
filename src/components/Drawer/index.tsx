@@ -10,17 +10,14 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-// import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import { Link, Outlet, useLocation } from "react-router-dom";
-
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import { t } from "i18next";
 import React from "react";
 import HeaderComp from "../Header";
 import { PageRoutes } from "../Utils";
-// import { IconButton } from "@mui/material";
 
 const drawerWidth = 220;
 
@@ -29,7 +26,7 @@ export default function ResponsiveDrawer() {
 
   const styles = {
     gradient: {
-      backgroundImage: "linear-gradient(to bottom, #4f46e5,##5c54e3, #98a1fa)",
+      backgroundImage: "linear-gradient(to bottom, #4f46e5,#5c54e3, #98a1fa)",
     },
     iconSize: {
       fontSize: "30px",

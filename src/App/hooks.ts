@@ -2,10 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { TypedUseSelectorHook } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "./store";
+import { IStateProps } from "../components/interfaces";
 
-interface IStateProps{
-    isLoggedIn : boolean
-}
+
 
 const initialState: IStateProps = {
   isLoggedIn:false

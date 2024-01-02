@@ -4,14 +4,9 @@ import { Typography } from "@mui/material";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import Button from "../Button";
-import { AssignData, IQuizProp } from "../Data";
-interface IResData {
-  allQuizzes: IQuizProp[];
-}
-interface IWrapper {
-  status: string;
-  data: IResData;
-}
+import { AssignData } from "../Data";
+import { IQuizProp, IQuizResData, IResWrapper } from "../interfaces";
+
 const WhatsDue = () => {
   const [quizzes, setQuizzes] = useState<IQuizProp[]>([]);
 
@@ -21,7 +16,7 @@ const WhatsDue = () => {
         .then(async (res) => {
           return await res.json();
         })
-        .then((data: IWrapper) => {
+        .then((data: IResWrapper<IQuizResData>) => {
           setQuizzes(data.data.allQuizzes);
         });
     }

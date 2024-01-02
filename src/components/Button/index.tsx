@@ -1,13 +1,15 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
 
-type widthType = "w-full" | "w-fit";
+import { IBtnProps } from "../interfaces";
 
-interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  className?: string;
-  width?: widthType;
-}
-const Button = ({ children, className, width = "w-fit", ...rest }: IProps) => {
+
+
+
+const Button = ({
+  children,
+  className,
+  width = "w-fit",
+  ...rest
+}: IBtnProps) => {
   return (
     <button
       className={`${className} ${width} rounded-md p-2 border-2 border-indigo-500 cursor-pointer `}
