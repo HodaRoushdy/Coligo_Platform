@@ -1,30 +1,31 @@
 import { t } from "i18next";
+import { Link } from "react-router-dom";
 import { AnnounceData } from "../Data";
+import { PageRoutes } from "../Utils";
 import OneAnnounce from "../for_one_announce";
 
 const Announcement = () => {
-  const renderAnnouceData = AnnounceData.map((announce) => (
+  const renderAnnounceData = AnnounceData.map((announce) => (
     <OneAnnounce announcement={announce} />
   ));
   return (
-    <div className="flex flex-col space-y-5">
+    <div className="space-y-2 bg-white rounded-lg p-2">
       <div className="flex justify-between items-center ">
         <div className="flex flex-col">
           <h1>{t("announce")}</h1>
-          <p className="text-gray-500 text-sm">
-            Lorem ipsum dolor sit amet consectetur.
-          </p>
+          <p className="text-gray-500 text-sm">{t("lorem")}</p>
         </div>
         <div>
-          <a
-            href="#"
+          <Link
+            to={PageRoutes.Announcement}
             style={{ textDecoration: "none" }}
-            className="text-indigo-400 font-bold">
+            className="text-indigo-400 font-bold"
+          >
             {t("all")}
-          </a>
+          </Link>
         </div>
       </div>
-      <div className="p-3">{renderAnnouceData}</div>
+      <div className="p-1">{renderAnnounceData}</div>
     </div>
   );
 };

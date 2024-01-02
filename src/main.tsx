@@ -1,24 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import global_en from "../src/globals/en/globals.json";
-import i18n from "i18next";
-import { I18nextProvider, initReactI18next } from "react-i18next";
+import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
+import App from "./App.tsx";
 import { store } from "./App/store.ts";
-
-i18n.use(initReactI18next).init({
-  resources: {
-    en: { translation: global_en },
-  },
-  lng: "en",
-
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-});
+import i18n from "./Utils/i18n.tsx";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

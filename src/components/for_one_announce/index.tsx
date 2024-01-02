@@ -1,19 +1,21 @@
 import { IData } from "../Data";
-import Image from "../Image";
 
 interface IProps {
   announcement: IData;
-  index?:number
+  index?: number;
 }
-const OneAnnounce = ({ announcement: announcement,index}: IProps) => {
+const OneAnnounce = ({ announcement: announcement, index }: IProps) => {
   return (
-    <div className="md:flex space-x-2 p-4" data-testid={`announcement ${index}`}>
-      <div className="border-r-2">
+    <div
+      className="md:flex gap-x-2 p-3 divide-x divide-slate-200"
+      data-testid={`announcement ${index}`}
+    >
+      <div className="">
         <div className="flex w-52 items-center">
           <div className="pr-3">
-            <Image
+            <img
               className="rounded-full w-10 h-10"
-              url={announcement.imgUrl}
+              src={announcement.imgUrl}
               alt={announcement.imgAlt}
             />
           </div>
@@ -29,7 +31,7 @@ const OneAnnounce = ({ announcement: announcement,index}: IProps) => {
 
       <div className="pl-3">
         <div className="w-98">
-          <p className="text-gray-400 text-sm">{announcement.annouce}</p>
+          <p className="text-gray-400 text-sm">{announcement.announce}</p>
         </div>
       </div>
     </div>

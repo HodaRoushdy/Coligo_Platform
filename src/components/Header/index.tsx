@@ -7,13 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import * as React from "react";
 // import AppBar from "@mui/material/AppBar";
+import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { t } from "i18next";
 import AuthBtn from "../auth-btn";
-import MenuIcon from "@mui/icons-material/Menu";
-
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -48,9 +48,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-// #818cf8
 
-const HeaderComp = () => {
+interface IHeaderProps {
+  handleDrawerToggle: () => void;
+}
+
+const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
   const imgUrl =
     "https://images.unsplash.com/photo-1521038199265-bc482db0f923?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -87,20 +90,14 @@ const HeaderComp = () => {
         horizontal: "right",
       }}
       open={isMenuOpen}
-      onClose={handleMenuClose}>
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      onClose={handleMenuClose}
+    >
+      <MenuItem onClick={handleMenuClose}>{t("profile")}</MenuItem>
+      <MenuItem onClick={handleMenuClose}>{t("my.account")}</MenuItem>
     </Menu>
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
-
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
 
   const renderMobileMenu = (
     <Menu
@@ -116,28 +113,31 @@ const HeaderComp = () => {
         horizontal: "right",
       }}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}>
+      onClose={handleMobileMenuClose}
+    >
       <MenuItem>
         <IconButton
           sx={{ color: "#4f46e5" }}
           size="large"
-          aria-label="show 17 new notifications">
+          aria-label="show 17 new notifications"
+        >
           <Badge badgeContent={4} color="primary">
             <MailIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>{t("messages")}</p>
       </MenuItem>
       <MenuItem>
         <IconButton
           sx={{ color: "#4f46e5" }}
           size="large"
-          aria-label="show 17 new notifications">
+          aria-label="show 17 new notifications"
+        >
           <Badge badgeContent={17} color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>{t("notifications")}</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -146,10 +146,11 @@ const HeaderComp = () => {
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="inherit">
+          color="inherit"
+        >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>{t("profile")}</p>
       </MenuItem>
     </Menu>
   );
@@ -157,26 +158,61 @@ const HeaderComp = () => {
   return (
     <>
       <Toolbar className="bg-gray-100">
-        <Typography
-          variant="h4"
-          noWrap
-          component="div"
-          className="sm:hidden xl:flex text-gray-600">
-          welcome Talia,
-        </Typography>
-
         <IconButton
           color="inherit"
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}>
+          sx={{ mr: 2, display: { sm: "none" } }}
+        >
           <MenuIcon style={{ color: "#4f46e5" }} />
         </IconButton>
+        <Typography
+          variant="h4"
+          noWrap
+          component="div"
+          className=" text-gray-600"
+          sx={{
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+              lg: "block",
+            },
+          }}
+        >
+          {t("welcome")}
+        </Typography>
+        <Typography
+          variant="h4"
+          noWrap
+          component="div"
+          className=" text-gray-600"
+          sx={{
+            display: {
+              xs: "block",
+              sm: "block",
+              md: "none",
+              lg: "none",
+            },
+          }}
+        >
+          {t("coligo")}
+        </Typography>
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Search className="rounded-full sm:hidden xl:flex bg-indigo-500">
+        <Search
+          sx={{
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+              lg: "block",
+            },
+          }}
+          className="rounded-full  xl:flex bg-indigo-500"
+        >
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -191,7 +227,8 @@ const HeaderComp = () => {
           className="sm:hidden lg:flex"
           size="large"
           aria-label="show 17 new notifications"
-          color="inherit">
+          color="inherit"
+        >
           <Badge badgeContent={17} color="error">
             <NotificationsIcon
               style={{
@@ -220,7 +257,8 @@ const HeaderComp = () => {
           aria-controls={menuId}
           aria-haspopup="true"
           onClick={handleProfileMenuOpen}
-          color="inherit">
+          color="inherit"
+        >
           {<img src={imgUrl} className="w-10 h-10 rounded-full" />}
         </IconButton>
       </Toolbar>

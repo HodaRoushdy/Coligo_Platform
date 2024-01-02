@@ -1,8 +1,9 @@
 import "@fontsource/roboto/700.css";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import ResponsiveDrawer from "./components/Drawer";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Annouce from "./pages/annoucement";
+import { PageRoutes } from "./components/Utils";
+import Announce from "./pages/announcement";
 import Courses from "./pages/courses";
 import Dashboard from "./pages/dashboard";
 import GradeBook from "./pages/grade_book";
@@ -14,15 +15,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path={PageRoutes.Home} element={<Home />} />
         <Route element={<ResponsiveDrawer />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/gradebook" element={<GradeBook />} />
-          <Route path="/performance" element={<Performance />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/annoucement" element={<Annouce />} />
+          <Route path={PageRoutes.Dashboard} element={<Dashboard />} />
+          <Route path={PageRoutes.Schedule} element={<Schedule />} />
+          <Route path={PageRoutes.Gradebook} element={<GradeBook />} />
+          <Route path={PageRoutes.Performance} element={<Performance />} />
+          <Route path={PageRoutes.Courses} element={<Courses />} />
+          <Route path={PageRoutes.Announcement} element={<Announce />} />
         </Route>
       </Routes>
     </Router>

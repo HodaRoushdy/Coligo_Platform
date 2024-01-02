@@ -6,119 +6,136 @@ import MovingIcon from "@mui/icons-material/Moving";
 import SchoolIcon from "@mui/icons-material/School";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 // import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 import Box from "@mui/material/Box";
-import HeaderComp from "../Header";
+import { t } from "i18next";
 import React from "react";
+import HeaderComp from "../Header";
+import { PageRoutes } from "../Utils";
 // import { IconButton } from "@mui/material";
 
 const drawerWidth = 220;
 
 export default function ResponsiveDrawer() {
+  const { pathname } = useLocation();
+
   const styles = {
     gradient: {
       backgroundImage: "linear-gradient(to bottom, #4f46e5 , #818cf8)",
     },
-    forColor: {
-      color: "white",
+    iconSize: {
       fontSize: "30px",
+    },
+    listItemButtonStyle: {
+      "&:hover": {
+        backgroundColor: "white!important",
+        color: "#818cf8!important",
+      },
+      "&:hover .MuiListItemIcon-root": {
+        color: "#818cf8!important",
+      },
+      "&.Mui-selected": {
+        backgroundColor: "white!important",
+        color: "#818cf8!important",
+      },
+      "& .MuiListItemIcon-root": {
+        color: "white!important",
+      },
+      "&.Mui-selected .MuiListItemIcon-root": {
+        color: "#818cf8!important",
+      },
     },
   };
 
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
- const [mobileOpen, setMobileOpen] = React.useState(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
- const handleDrawerToggle = () => {
-   setMobileOpen(!mobileOpen);
- };
   const drawer = (
     <div className="h-full" style={styles.gradient}>
       <Toolbar>
-        <h1
-          className="text-2xl flex justify-center w-full"
-          style={styles.forColor}>
-          Coligo
-        </h1>
+        <h1 className="text-2xl flex justify-center w-full">{t("coligo")}</h1>
       </Toolbar>
+      <Link to={PageRoutes.Dashboard}>
+        <ListItemButton
+          sx={styles.listItemButtonStyle}
+          selected={pathname == PageRoutes.Dashboard}
+        >
+          <ListItemIcon>
+            <HomeIcon style={styles.iconSize} />
+          </ListItemIcon>
+          <ListItemText className="txt" primary={t("dashboard")} />
+        </ListItemButton>
+      </Link>
 
-      <List className="space-y-4">
-        <Link to="/dashboard">
-          <ListItem className="drawerItem">
-            <ListItemButton>
-              <ListItemIcon>
-                <HomeIcon style={styles.forColor} />
-              </ListItemIcon>
-              <ListItemText className="txt" primary={"dashboard"} style={styles.forColor} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+      <Link to={PageRoutes.Schedule}>
+        <ListItemButton
+          sx={styles.listItemButtonStyle}
+          selected={pathname == PageRoutes.Schedule}
+        >
+          <ListItemIcon>
+            <CalendarMonthIcon style={styles.iconSize} />
+          </ListItemIcon>
+          <ListItemText style={styles.iconSize} primary={t("schedule")} />
+        </ListItemButton>
+      </Link>
 
-        <Link to="/schedule">
-          <ListItem button>
-            <ListItemButton>
-              <ListItemIcon>
-                <CalendarMonthIcon style={styles.forColor} />
-              </ListItemIcon>
-              <ListItemText style={styles.forColor} primary={"schedule"} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+      <Link to={PageRoutes.Courses}>
+        <ListItemButton
+          sx={styles.listItemButtonStyle}
+          selected={pathname == PageRoutes.Courses}
+        >
+          <ListItemIcon>
+            <AssignmentIcon style={styles.iconSize} />
+          </ListItemIcon>
+          <ListItemText style={styles.iconSize} primary={t("courses")} />
+        </ListItemButton>
+      </Link>
 
-        <Link to="/courses">
-          <ListItem button>
-            <ListItemButton>
-              <ListItemIcon>
-                <AssignmentIcon style={styles.forColor} />
-              </ListItemIcon>
-              <ListItemText style={styles.forColor} primary={"courses"} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
-      </List>
+      <Link to={PageRoutes.Gradebook}>
+        <ListItemButton
+          sx={styles.listItemButtonStyle}
+          selected={pathname == PageRoutes.Gradebook}
+        >
+          <ListItemIcon>
+            <SchoolIcon style={styles.iconSize} />
+          </ListItemIcon>
+          <ListItemText style={styles.iconSize} primary={t("gradeBook")} />
+        </ListItemButton>
+      </Link>
 
-      <List className="space-y-4">
-        <Link to="gradebook">
-          <ListItem button>
-            <ListItemButton>
-              <ListItemIcon>
-                <SchoolIcon style={styles.forColor} />
-              </ListItemIcon>
-              <ListItemText style={styles.forColor} primary={"Grade book"} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+      <Link to={PageRoutes.Performance}>
+        <ListItemButton
+          sx={styles.listItemButtonStyle}
+          selected={pathname == PageRoutes.Performance}
+        >
+          <ListItemIcon>
+            <MovingIcon style={styles.iconSize} />
+          </ListItemIcon>
+          <ListItemText style={styles.iconSize} primary={t("performance")} />
+        </ListItemButton>
+      </Link>
 
-        <Link to="performance">
-          <ListItem button>
-            <ListItemButton>
-              <ListItemIcon>
-                <MovingIcon style={styles.forColor} />
-              </ListItemIcon>
-              <ListItemText style={styles.forColor} primary={"Performance"} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
-
-        <Link to="/annoucement">
-          <ListItem button>
-            <ListItemButton>
-              <ListItemIcon>
-                <CampaignIcon style={styles.forColor} />
-              </ListItemIcon>
-              <ListItemText style={styles.forColor} primary={"annoucement"} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
-      </List>
+      <Link to={PageRoutes.Announcement}>
+        <ListItemButton
+          sx={styles.listItemButtonStyle}
+          selected={pathname == PageRoutes.Announcement}
+        >
+          <ListItemIcon>
+            <CampaignIcon style={styles.iconSize} />
+          </ListItemIcon>
+          <ListItemText style={styles.iconSize} primary={t("announce")} />
+        </ListItemButton>
+      </Link>
     </div>
   );
 
@@ -131,13 +148,15 @@ export default function ResponsiveDrawer() {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-        }}>
-        <HeaderComp />
+        }}
+      >
+        <HeaderComp handleDrawerToggle={handleDrawerToggle} />
       </AppBar>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders">
+        aria-label="mailbox folders"
+      >
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -151,7 +170,18 @@ export default function ResponsiveDrawer() {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-          }}>
+          }}
+          PaperProps={{
+            sx: {
+              backgroundColor: "linear-gradient(to bottom, #4f46e5 , #819fff)",
+              color: "white",
+              "::selection": {
+                backgroundColor: "white",
+              },
+              ":hover": { backgroundColor: "white" },
+            },
+          }}
+        >
           {drawer}
         </Drawer>
 
@@ -164,7 +194,17 @@ export default function ResponsiveDrawer() {
               width: drawerWidth,
             },
           }}
-          open>
+          PaperProps={{
+            sx: {
+              backgroundColor: "linear-gradient(to bottom, #4f46e5 , #819fff)",
+              color: "white",
+              "::selection": {
+                backgroundColor: "white",
+              },
+            },
+          }}
+          open
+        >
           {drawer}
         </Drawer>
       </Box>
@@ -175,7 +215,8 @@ export default function ResponsiveDrawer() {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}>
+        }}
+      >
         <Toolbar />
         <Outlet />
       </Box>
