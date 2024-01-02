@@ -5,11 +5,11 @@ export interface IData {
   personDesc: string;
   annouce: string;
 }
-export interface IQuizProp{
-  attribute: string,
-  value:string
+export interface IQuizProp {
+  attribute: string;
+  value: string;
 }
-export const AnnoucData: IData[] = [
+export const AnnounceData: IData[] = [
   {
     imgUrl:
       "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -18,7 +18,7 @@ export const AnnoucData: IData[] = [
     personDesc: "Math 101",
     annouce:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolor doloribus, magni ea, veniam placeat nemo ut asperiores optio, esse est quod cumque praesentium rerum.",
-  }, 
+  },
   {
     imgUrl:
       "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -44,9 +44,9 @@ export const AnnoucData: IData[] = [
     personName: "Events manager",
     personDesc: "Events",
     annouce:
-      "hellooooo can't wait our upcoming trip on the next weekend, the trip will be to Dreampark and pyramids , to book your seat please contact your class teacher "},
+      "hellooooo can't wait our upcoming trip on the next weekend, the trip will be to Dreampark and pyramids , to book your seat please contact your class teacher ",
+  },
 ];
-
 
 export const QuizData: IQuizProp[] = [
   {
@@ -59,7 +59,7 @@ export const QuizData: IQuizProp[] = [
   },
   {
     attribute: "Due to",
-    value: "20 Dec 2017 - 9:00 pm"
+    value: "20 Dec 2017 - 9:00 pm",
   },
 ];
 
