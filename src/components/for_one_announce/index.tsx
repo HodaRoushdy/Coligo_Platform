@@ -15,15 +15,15 @@ const OneAnnounce = ({ announcement: announcement, index }: IProps) => {
           <div className="pr-3">
             <img
               className="rounded-full w-10 h-10"
-              src={announcement.imgUrl}
+              src={announcement.image}
               alt={announcement.imgAlt}
             />
           </div>
 
           <div>
-            <h3>{announcement.personName}</h3>
+            <h3>{announcement.name}</h3>
             <span className="text-gray-400 text-sm">
-              {announcement.personDesc}
+              {announcement.desc}
             </span>
           </div>
         </div>
@@ -31,7 +31,7 @@ const OneAnnounce = ({ announcement: announcement, index }: IProps) => {
 
       <div className="pl-3">
         <div className="w-98">
-          <p className="text-gray-400 text-sm">{announcement.announce}</p>
+          <p className="text-gray-400 text-sm">{announcement.annoucement}</p>
         </div>
       </div>
     </div>
